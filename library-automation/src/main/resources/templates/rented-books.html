@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rented Books</title>
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: general-navbar"></div>
+
+    <div class="wrapper">
+        <div class="table-wrapper">
+            
+            <div class="search-wrapper">
+                <input type="text" name="search" placeholder="Search Book">
+                <button type="submit">Search</button>
+            </div>
+
+            <div class="table-add-button">
+                <button type="button" th:onclick="window.location.href='@{/rent-book}'">Rent a Book</button>    
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Book Name</th>
+                        <th>Blurb</th>
+                        <th>Rental Price</th>
+                        <th>Rental Date</th>
+                        <th>Return Date</th>
+                        <th>Genre</th>
+                        <th>Return</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="rented-book ${rented-books}">
+
+                        <td th:text="${rented-book.bookId}"></td>
+                        <td th:text="${rented-book.bookName}"></td>
+                        <td th:text="${rented-book.blurb}"></td>
+                        <td th:text="${rented-book.rentalPrice}"></td>
+                        <td th:text="${#dates.format(rented-book.rentalDate,'yyyy-MM-dd')}"></td>
+                        <td th:text="${#dates.format(rented-book.returnDate,'yyyy-MM-dd')}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="genre : ${book.genres}" th:text="${genre.name}"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a th:href="@{/}"></a>
+                            <button type="button" class="image-btn"><img src="../images/return.png"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

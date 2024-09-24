@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Automation - Login</title>
+    <link rel="stylesheet" th:href="@..{/css/style.css}">
+    <link rel="stylesheet" th:href="@{../css/login.css}">
+
+</head>
+
+<body>
+    
+    <div class="containers-wrapper">
+        <div class="login-logo-wrapper">
+            <h1>RB</h1>
+            <h3>Rented Books</h3>
+        </div>
+        <div class="login-wrapper">
+            <form th:action="@{/login}" method="post">
+                <h2>LOGIN</h2>
+                <div class="input-box">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" th:field="*{username}" placeholder="Username" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

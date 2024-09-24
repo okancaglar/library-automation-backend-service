@@ -1,0 +1,114 @@
+.containers-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* max-width: fit-content; */
+  padding: 50px;
+  border-radius: 10px;
+  overflow: auto;
+  /* background: #02011d; */
+  box-shadow: 0 15px 20px #282828;
+  /* max-height: fit-content; */
+  margin-top: 5em;
+  height: 30em;
+  width: 30em;
+  /* background-color: #b8b4b4; */
+}
+
+.login-logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* max-width: fit-content; */
+  /* padding: 100px; */
+  border-radius: 10px;
+  overflow: auto;
+  box-shadow: 0 15px 20px #282828;
+  /* max-height: fit-content; */
+  margin-top: 5em;
+  height: 30em;
+  width: 30em;
+  /* background-color: #b8b4b4; */
+  opacity: 200px; 
+}
+
+.login-btn{
+  width: 50%;
+  align-self: center;
+  margin-top: 1.5em;
+  height: 2.5em;
+}
+
+.login-btn:hover {
+  background-color: #565656;
+}
+
+h2 {
+  font-size: 3em;
+  font-weight: 850;
+  padding-left: 2px;
+  /* text-align: left; */
+  color: #282828;
+  /* padding-top: 0px; */
+  /* padding-bottom: 8px; */
+  /* border-bottom: 1px solid silver; */
+  /* margin-bottom: 30px; */
+  background: -webkit-linear-gradient(hsla(0, 0%, 18%, 0.574), #282828);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 {
+  text-shadow: 13px 13px #282828;
+  font-weight: bolder;
+  font-size: 10em;
+  background: -webkit-linear-gradient(hsla(0, 0%, 85%, 0.574), #282828);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3 {
+  font-size: 1.75em;
+  font-weight: bold;
+  margin-left: 0.75em;
+  color: #282828;
+}
+
+
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .containers-wrapper {
+    flex-direction: column;
+  }
+
+  .login-logo-wrapper {
+    height: fit-content;
+    width: fit-content;
+    padding: 3%;
+    margin-top: 10em;
+  }
+
+  .login-wrapper {
+    padding: 2em 3em;
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: 5em;
+    text-shadow: 10px 10px #343434;
+  }
+
+  h3 {
+    font-size: 1em;
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Table</title>
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div th:replace="fragments/navbar :: general-navbar"></div>
+        
+        <div class="table-wrapper">
+            <h2>Employee Table</h2>
+            <br>
+
+            <div class="search-wrapper">
+                <input type="text" name="search" placeholder="Search Employee">
+                <button type="submit">Search</button>
+            </div>
+            <div class="table-add-button">
+                <button type="button">Add Employee</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Password</th>
+                        <th>Employee Name</th>
+                        <th>Lastname</th>
+                        <th>Registration Date</th>
+                        <th>Daily Wage</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="employee : ${employees}">
+                        <td th:text="${employee.employeeId}"></td>
+                        <td th:text="${employee.password}"></td>
+                        <td th:text="${employee.employeeFirstname}"></td>
+                        <td th:text="${employee.employeeLastName}"></td>
+                        <td th:text="${#dates.format(employee.registrationDate,'yyyy-MM-dd')}"></td>
+                        <td th:text="${employee.dailyWage}"></td>
+                        <td th:text="${employee.role}"></td>
+                        <td>
+                            <a th:href="@{/employee/edit/{id}(id=${employee.employeeId})}">
+                                <button type="button" class="image-btn"><img src="../images/editing.png"></button>
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: general-navbar"></div>
+
+    <div class="form-wrapper">
+        <div class="add-form-wrapper">
+
+            <form th:action="@{/employee/add}" th:object="${employee}" method="post">
+                <div class="input-box">
+                    <label for="employeeId">Employee ID</label>
+                    <input type="text" id="employeeId" th:field="*{employeeId}" placeholder="ID" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="employeeFirstname">First Name</label>
+                    <input type="text" id="employeeFirstname" th:field="*{employeeFirstname}" placeholder="First Name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="employeeLastname">Last Name</label>
+                    <input type="text" id="employeeLastname" th:field="*{employeeLastname}" placeholder="Last Name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="registrationDate">Registration Date</label>
+                    <input type="date" id="registrationDate" th:field="*{registrationDate}" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="dailyWage">Daily Wage</label>
+                    <input type="text" id="dailyWage" th:field="*{dailyWage}" placeholder="Daily Wage" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="role">Role</label>
+                    <input type="text" id="role" th:field="*{role}" placeholder="Role" required>
+                </div>
+            
+                <button type="submit" class="form-add-button">Add</button>
+            </form>
+        </div>
+    </div>
+    
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

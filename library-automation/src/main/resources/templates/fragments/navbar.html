@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{../../css/style.css}">
+</head>
+
+<body>
+    <!-- Home Navbar -->
+    <div th:fragment="home-navbar">
+        <nav class="home-nav">
+            <div class="logo">
+                <img src="../../images/library-automation.png" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- General Navbar -->
+    <div th:fragment="general-navbar">
+        <nav class="general-nav">
+            <div class="logo">
+                <img src="../../images/library-automation.png" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/books}">Book</a></li>
+                <li><a th:href="@{/customers}">Customer</a></li>
+                <li><a th:href="@{/employee}">Employee</a></li>
+                <li id="logout-link"><a th:href="@{/add-customer}">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+
+</html>

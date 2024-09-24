@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee</title>
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: general-navbar"></div>
+
+    <div class="form-wrapper">
+        <div class="edit-form-wrapper">
+
+            <form th:action="@{/employee/save}" th:object="${employee}" method="post">
+                <h2>Edit Employee</h2>
+
+                <div class="input-box">
+                    <label for="employeeId">ID</label>
+                    <input type="text" id="employeeId" th:field="*{employeeId}" placeholder="ID" readonly>
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="employeeFirstName">First Name</label>
+                    <input type="text" id="employeeFirstName" th:field="*{employeeFirstName}" placeholder="First Name"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label for="employeeLastName">Last Name</label>
+                    <input type="text" id="employeeLastName" th:field="*{employeeLastName}" placeholder="Last Name"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label for="registrationDate">Registration Date</label>
+                    <input type="date" id="registrationDate" th:field="*{registrationDate}" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="dailyWage">Daily Wage</label>
+                    <input type="number" id="dailyWage" th:field="*{dailyWage}" placeholder="Daily Wage"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label for="role">Role</label>
+                    <select id="role" th:field="*{role}" required>
+                        <option th:each="role : ${allRoles}" th:value="${role}" th:text="${role.name}"
+                            th:selected="${role == employee.role}"></option>
+                    </select>
+                </div>
+
+                <div class="save-delete-button-wrapper">
+                    <button type="button" class="delete-btn"
+                        th:onclick="'/employee/delete/' + ${employee.employeeId}">Delete</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

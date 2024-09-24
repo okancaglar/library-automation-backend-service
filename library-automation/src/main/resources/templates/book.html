@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Table</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: general-navbar"></div>
+    
+    <div class="wrapper">
+        <div class="table-wrapper">
+
+            <h2>Book Table</h2>
+            <br>
+
+            <div class="search-wrapper">
+                <input type="text" name="search" placeholder="Search Book">
+                <button type="submit">Search</button>
+            </div>
+
+            <div class="table-add-button">
+                <a th:href="@{/lib-auto/book/add}">
+                <button type="button">Add Book</button>
+                </a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Book Name</th>
+                        <th>Blurb</th>
+                        <th>Rental Price</th>
+                        <th>Adding Date</th>
+                        <th>Writer</th>
+                        <th>Genres</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.bookId}"></td>
+                        <td th:text="${book.bookName}"></td>
+                        <td th:text="${book.blurb}"></td>
+                        <td th:text="${book.rentalPrice}"></td>
+                        <td th:text="${book.addingDate}"></td>
+                        <td th:text="${book.writer.writer}"></td>
+                        <td>
+                            <ul>
+                                <li  th:each="genre : ${book.genres}" th:text="${genre.genre}"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a th:href="@{/lib-auto/book/edit/{id}(id=${book.bookId})}">
+                                <button type="button" class="image-btn"><img src="/images/editing.png"></button>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

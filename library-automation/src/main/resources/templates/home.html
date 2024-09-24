@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: home-navbar"></div>
+
+    <div class="wrapper">
+        
+        <div class="table-wrapper">
+
+            <div class="search-wrapper">
+                <input type="text" name="search" placeholder="Search Book">
+                <button type="submit">Search</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Book Name</th>
+                        <th>Adding Date</th>
+                        <th>Blurb</th>
+                        <th>Rental Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.bookId}"></td>
+                        <td th:text="${book.bookName}"></td>
+                        <td th:text="${book.blurb}"></td>
+                        <td th:text="${book.rentalPrice}"></td>
+                        <td th:text="${#dates.format(book.addingDate, 'yyyy-MM-dd')}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="genre : ${book.genres}" th:text="${genre.genre}"></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

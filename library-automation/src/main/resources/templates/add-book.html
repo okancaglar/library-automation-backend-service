@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: general-navbar"></div>
+
+    <div class="form-wrapper">
+        <div class="add-form-wrapper">
+            <form th:action="@{/lib-auto/book/add}" th:object="${book}" method="post">
+                <h2>Add Book</h2>
+
+                <div class="input-box">
+                    <label for="id">Book ID</label>
+                    <input type="text" id="id" th:field="*{id}" placeholder="ID" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="name">Book Name</label>
+                    <input type="text" id="name" th:field="*{name}" placeholder="Book Name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="blurb">Blurb</label>
+                    <textarea id="blurb" th:field="*{blurb}" placeholder="Blurb" required></textarea>
+                </div>
+
+                <div class="input-box">
+                    <label for="rentalPrice">Rental Price</label>
+                    <input type="number" id="rentalPrice" th:field="*{rentalPrice}"
+                        placeholder="Rental Price" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="addingDate">Adding Date</label>
+                    <input type="date" id="addingDate" th:field="*{addingDate}" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="genres">Genre</label>
+                    <input type="text" id="genres" th:field="*{genres}"
+                           placeholder="genre1,genre2" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="writer">Writer Name</label>
+                    <input type="text" id="writer" th:field="*{writer}"
+                           placeholder="Writer Name" required>
+                </div>
+
+                <button type="submit" class="form-add-button">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

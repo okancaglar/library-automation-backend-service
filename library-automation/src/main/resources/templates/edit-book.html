@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: general-navbar"></div>
+
+    <div class="form-wrapper">
+        <div class="edit-form-wrapper">
+            <h2>Edit Book</h2>
+
+            <div class="unchangeable-settings">
+                <dl>
+                    <dt>Book Id: </dt>
+                    <dd th:text="${book.id}"></dd>
+
+                    <dt>Adding Date : </dt>
+                    <dd th:text="${book.addingDate}"></dd>
+                </dl>
+            </div>
+
+            <form th:action="@{/book/edit}" th:object="${book}" method="post">
+
+                <div class="input-box">
+                    <label for="name">Book Name</label>
+                    <input type="text" id="name" th:field="*{name}" placeholder="Book Name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="blurb">Blurb</label>
+                    <textarea id="blurb" th:field="*{blurb}" placeholder="Blurb" required></textarea>
+                </div>
+                
+                <div class="input-box">
+                    <label for="rentalPrice">Rental Price</label>
+                    <input type="number" id="rentalPrice" th:field="*{rentalPrice}"
+                        placeholder="Rental Price" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="genres">Genre</label>
+                    <input type="text" id="genres" th:field="*{genres}"
+                           placeholder="*{genres}" required>
+
+
+                </div>
+                
+                <div class="save-delete-button-wrapper">
+                    <form th:action="@{/book/delete/{id}(id=${book.id})}" method="post">
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                    <form th:action="@{/book/save" method="post">
+                    <button type="submit" class="save-btn">Save</button>
+                    </form>
+
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>
